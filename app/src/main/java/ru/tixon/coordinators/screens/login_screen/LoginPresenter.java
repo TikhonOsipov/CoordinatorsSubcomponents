@@ -43,10 +43,5 @@ public class LoginPresenter extends BasePresenter implements ILoginPresenter {
         Log.w("myLogs", getClass().getSimpleName() + ": setupComponent called");
         component = screensComponent.plus(new CoordinatorModule(this));
         component.inject(this);
-        /*component = DaggerICoordinatorComponent.builder()
-                .iScreensComponent(screensComponent)
-                .coordinatorModule(new CoordinatorModule(this))
-                .build();
-        component.inject(this);*/
     }
 }

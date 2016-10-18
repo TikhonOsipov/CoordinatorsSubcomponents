@@ -13,6 +13,8 @@ import ru.tixon.coordinators.screens.main_screen.MainPresenter;
 @AppScope
 @Subcomponent(modules = {CoordinatorModule.class})
 public interface ICoordinatorComponent {
+    /*IMainCoordinator getMainCoordinator();
+    ILoginCoordinator getLoginCoordinator();*/
     void inject(MainPresenter presenter);
     void inject(LoginPresenter presenter);
 }

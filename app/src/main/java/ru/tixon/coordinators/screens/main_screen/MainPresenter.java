@@ -17,7 +17,6 @@ import ru.tixon.coordinators.screens.login_screen.LoginActivity;
  */
 public class MainPresenter extends BasePresenter implements IMainPresenter {
     private IMainView view;
-    private ICoordinatorComponent component;
 
     @Inject
     Model model;
@@ -44,7 +43,7 @@ public class MainPresenter extends BasePresenter implements IMainPresenter {
     @Override
     public void setupComponent(IScreensComponent screensComponent) {
         Log.w("myLogs", getClass().getSimpleName() + ": setupComponent called");
-        component = screensComponent.plus(new CoordinatorModule(this));
+        ICoordinatorComponent component = screensComponent.plus(new CoordinatorModule(this));
         component.inject(this);
     }
 }

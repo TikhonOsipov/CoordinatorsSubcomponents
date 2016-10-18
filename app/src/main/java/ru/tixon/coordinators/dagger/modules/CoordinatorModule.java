@@ -2,7 +2,6 @@ package ru.tixon.coordinators.dagger.modules;
 
 import dagger.Module;
 import dagger.Provides;
-import ru.tixon.coordinators.dagger.scopes.ActivityScope;
 import ru.tixon.coordinators.dagger.scopes.AppScope;
 import ru.tixon.coordinators.navigation.ILoginCoordinator;
 import ru.tixon.coordinators.navigation.IMainCoordinator;
@@ -53,7 +52,7 @@ public class CoordinatorModule {
     }
 
     @Provides
-    @ActivityScope
+    @AppScope
     public ILoginCoordinator provideLoginCoordinator() {
         return new LoginCoordinator(loginPresenter);
     }
