@@ -12,6 +12,15 @@ import ru.hiq.coordinators.dagger.modules.AppModule;
  */
 public class App extends Application {
     IAppComponent appComponent;
+    private boolean useTestScreenModule;
+
+    public boolean usingTestScreenModule() {
+        return useTestScreenModule;
+    }
+
+    public void setUseTestScreenModule(boolean useTestScreenModule) {
+        this.useTestScreenModule = useTestScreenModule;
+    }
 
     public static App get(Context context) {
         return (App) context.getApplicationContext();

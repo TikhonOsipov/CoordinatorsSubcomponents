@@ -38,16 +38,8 @@ public class DaggerActivityTestRule<T extends Activity> extends ActivityTestRule
                 .getTargetContext().getApplicationContext(), getActivity());
     }
 
-    @Override
-    protected void afterActivityLaunched() {
-        super.afterActivityLaunched();
-        mListener.afterActivityLaunched((Application) InstrumentationRegistry.getInstrumentation()
-                .getTargetContext().getApplicationContext(), getActivity());
-    }
-
     public interface ActivityLaunchedListener<T> {
 
         void beforeActivityLaunched(@NonNull Application application, @NonNull T activity);
-        void afterActivityLaunched(@NonNull Application application, @NonNull T activity);
     }
 }

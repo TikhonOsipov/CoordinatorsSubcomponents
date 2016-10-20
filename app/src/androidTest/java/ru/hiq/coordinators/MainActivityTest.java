@@ -13,9 +13,6 @@ import org.junit.runner.RunWith;
 import java.util.concurrent.TimeUnit;
 
 import ru.hiq.coordinators.application.App;
-import ru.hiq.coordinators.dagger.components.IAppComponent;
-import ru.hiq.coordinators.dagger.components.IScreensTestComponent;
-import ru.hiq.coordinators.dagger.modules.ScreensTestModule;
 import ru.hiq.coordinators.screens.main_screen.MainActivity;
 
 /**
@@ -29,14 +26,7 @@ public class MainActivityTest {
             new DaggerActivityTestRule<>(MainActivity.class, new DaggerActivityTestRule.ActivityLaunchedListener<MainActivity>() {
                 @Override
                 public void beforeActivityLaunched(@NonNull Application application, @NonNull MainActivity activity) {
-                }
-
-                @Override
-                public void afterActivityLaunched(@NonNull Application application, @NonNull MainActivity activity) {
-                    App app = (App) application;
-                    IAppComponent appComponent = app.getAppComponent();
-                    IScreensTestComponent component = appComponent.plus(new ScreensTestModule(activity));
-                    component.inject(activity);
+                    ((App) application).setUseTestScreenModule(true);
                 }
             });
 

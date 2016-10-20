@@ -3,9 +3,7 @@ package ru.hiq.coordinators.dagger.modules;
 import dagger.Module;
 import dagger.Provides;
 import ru.hiq.coordinators.dagger.scopes.ActivityScope;
-import ru.hiq.coordinators.navigation.MainCoordinator;
 import ru.hiq.coordinators.screens.login_screen.MainTestPresenter;
-import ru.hiq.coordinators.screens.main_screen.IMainCoordinatorCallback;
 import ru.hiq.coordinators.screens.main_screen.IMainPresenter;
 import ru.hiq.coordinators.screens.main_screen.IMainView;
 
@@ -31,11 +29,5 @@ public class ScreensTestModule {
     @ActivityScope
     public IMainPresenter provideTestPresenter(MainTestPresenter testPresenter) {
         return testPresenter;
-    }
-
-    @Provides
-    @ActivityScope
-    public IMainCoordinatorCallback provideMainCoordinatorCallback(MainCoordinator coordinator) {
-        return coordinator;
     }
 }

@@ -9,16 +9,20 @@ import android.widget.Toast;
 import javax.inject.Inject;
 
 import ru.hiq.coordinators.R;
+import ru.hiq.coordinators.application.App;
 import ru.hiq.coordinators.dagger.components.IAppComponent;
 import ru.hiq.coordinators.dagger.components.IScreensComponent;
+import ru.hiq.coordinators.dagger.components.IScreensTestComponent;
 import ru.hiq.coordinators.dagger.modules.ScreensModule;
+import ru.hiq.coordinators.dagger.modules.ScreensTestModule;
 import ru.hiq.coordinators.screens.base.BaseActivity;
 
 public class MainActivity extends BaseActivity implements IMainView {
     IScreensComponent component;
+    IScreensTestComponent testComponent;
 
     @Inject
-    MainPresenter presenter;
+    IMainPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +45,14 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     protected void setupComponent(IAppComponent appComponent) {
-        Log.w("myLogs", getClass().getSimpleName() + ": setupComponent called");
-        component = appComponent.plus(new ScreensModule(this));
-        component.inject(this);
+        if(App.get(this).usingTestScreenModule()) {
+            Log.w("myLogs", getClass().getSimpleName() + ": setupComponent TEST called");
+            testComponent = appComponent.plus(new ScreensTestModule(this));
+            testComponent.inject(this);
+        } else {
+            Log.w("myLogs", getClass().getSimpleName() + ": setupComponent called");
+            component = appComponent.plus(new ScreensModule(this));
+            component.inject(this);
+        }
     }
 }
