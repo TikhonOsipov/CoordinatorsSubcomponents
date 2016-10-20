@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import ru.hiq.coordinators.model.Model;
 import ru.hiq.coordinators.screens.base.BasePresenter;
+import ru.hiq.coordinators.screens.base.IBaseView;
 import ru.hiq.coordinators.screens.login_screen.LoginActivity;
 
 /**
@@ -24,9 +25,13 @@ public abstract class FlowCoordinator implements ICoordinator {
     @Override
     public void finish() {
         presenter = requestPresenter();
-        if(model.isNeedLogin()) {
+        IBaseView navContext = presenter.getNavigationContext();
+        /*if(model.isNeedLogin()) {
             model.clearLogin();
             presenter.getNavigationContext().startView(LoginActivity.class); //todo wrap this in interface
-        }
+        }*/
+        new Navigation.Condition()
+                .when(model.isNeedLogin())
+                .launch(LoginActivity.class).perform(navContext);
     }
 }
