@@ -1,5 +1,7 @@
 package ru.hiq.coordinators.navigation;
 
+import javax.inject.Inject;
+
 import ru.hiq.coordinators.model.Model;
 import ru.hiq.coordinators.screens.base.BasePresenter;
 import ru.hiq.coordinators.screens.login_screen.LoginActivity;
@@ -10,21 +12,21 @@ import ru.hiq.coordinators.screens.login_screen.LoginActivity;
 
 public abstract class FlowCoordinator implements ICoordinator {
     private BasePresenter presenter;
-    private Model model;
+
+    @Inject
+    Model model;
 
     protected abstract BasePresenter requestPresenter();
-    protected abstract Model requestModel();
 
     public FlowCoordinator() {
     }
 
     @Override
-    public void next() {
+    public void finish() {
         presenter = requestPresenter();
-        model = requestModel();
         if(model.isNeedLogin()) {
             model.clearLogin();
-            presenter.getNavigationContext().startView(LoginActivity.class);
+            presenter.getNavigationContext().startView(LoginActivity.class); //todo wrap this in interface
         }
     }
 }

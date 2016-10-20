@@ -36,7 +36,7 @@ public class MainCoordinator extends FlowCoordinator implements IMainCoordinator
         Log.w("myLogs", getClass().getSimpleName() + ": model#" + model.hashCode());
         Log.w("myLogs", getClass().getSimpleName() + ": presenter#" + presenter.hashCode());
         Log.w("myLogs", getClass().getSimpleName() + " finish called");
-        super.next();
+        super.finish();
     }
 
     @Override
@@ -47,10 +47,5 @@ public class MainCoordinator extends FlowCoordinator implements IMainCoordinator
     @Override
     public void setPresenter(BasePresenter presenter) {
         this.presenter = (MainPresenter) presenter;
-    }
-
-    @Override
-    protected Model requestModel() {
-        return model;
     }
 }

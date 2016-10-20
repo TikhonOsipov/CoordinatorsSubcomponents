@@ -31,7 +31,7 @@ public class LoginCoordinator extends FlowCoordinator implements ILoginCoordinat
 
     @Override
     public void finish() {
-        super.next();
+        super.finish();
         Log.w("myLogs", getClass().getSimpleName() + ": start method called: model is null? " + (model == null));
         //Log.d("myLogs", getClass().getSimpleName() + ": model#" + model.hashCode());
         Log.w("myLogs", getClass().getSimpleName() + ": presenter#" + presenter.hashCode());
@@ -46,10 +46,5 @@ public class LoginCoordinator extends FlowCoordinator implements ILoginCoordinat
     @Override
     public void setPresenter(BasePresenter presenter) {
         this.presenter = (LoginPresenter) presenter;
-    }
-
-    @Override
-    protected Model requestModel() {
-        return model;
     }
 }
