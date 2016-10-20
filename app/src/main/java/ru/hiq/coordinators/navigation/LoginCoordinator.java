@@ -31,11 +31,11 @@ public class LoginCoordinator extends FlowCoordinator implements ILoginCoordinat
 
     @Override
     public void finish() {
-        super.finish();
         Log.w("myLogs", getClass().getSimpleName() + ": start method called: model is null? " + (model == null));
         //Log.d("myLogs", getClass().getSimpleName() + ": model#" + model.hashCode());
         Log.w("myLogs", getClass().getSimpleName() + ": presenter#" + presenter.hashCode());
         Log.w("myLogs", getClass().getSimpleName() + " finish called");
+        super.finish();
     }
 
     @Override

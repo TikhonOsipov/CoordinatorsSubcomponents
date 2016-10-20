@@ -6,4 +6,5 @@ package ru.hiq.coordinators.screens.base;
 
 public interface IBaseView {
     void startView(Class<?> activityClass);
+    void startViewClearTask(Class<?> activityClass);
 }

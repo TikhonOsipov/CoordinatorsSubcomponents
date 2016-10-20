@@ -27,6 +27,7 @@ public class LoginActivity extends BaseActivity implements ILoginView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        presenter.onCreate();
 
         findViewById(R.id.loginText).setOnClickListener(new View.OnClickListener() {
             @Override

@@ -5,4 +5,6 @@ package ru.hiq.coordinators.screens.login_screen;
  */
 public interface ILoginPresenter {
     void textClicked();
+
+    void onCreate();
 }

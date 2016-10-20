@@ -23,5 +23,12 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         startActivity(new Intent(this, activityClass));
     }
 
+    @Override
+    public void startViewClearTask(Class<?> activityClass) {
+        Intent intent = new Intent(this, activityClass);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
+
     protected abstract void setupComponent(IAppComponent appComponent);
 }

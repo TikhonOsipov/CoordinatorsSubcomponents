@@ -28,6 +28,7 @@ public class MainPresenter extends BasePresenter implements IMainPresenter {
     @Override
     public void textClicked() {
         Log.d("myLogs", getClass().getSimpleName() + ": presenter#" + hashCode());
+        Log.d("myLogs", getClass().getSimpleName() + "text clicked: model#" + model.hashCode());
         model.setNeedLogin(true);
         coordinator.finish();
     }

@@ -12,7 +12,13 @@ class Navigation {
 
     static class Condition {
         private boolean condition;
+        private boolean clearTask;
+        private IBaseView view;
         private Class<?> activityClass;
+
+        public Condition(IBaseView view) {
+            this.view = view;
+        }
 
         Condition when(boolean condition) {
             this.condition = condition;
@@ -24,8 +30,20 @@ class Navigation {
             return this;
         }
 
-        Navigation perform(IBaseView view) {
-            if(condition) view.startView(activityClass);
+        Condition clearTask() {
+            this.clearTask = true;
+            return this;
+        }
+
+        Navigation create() {
+            if(condition) {
+                if(!clearTask) {
+                    view.startView(activityClass);
+                } else {
+                    clearTask = false;
+                    view.startViewClearTask(activityClass);
+                }
+            }
             return new Navigation(this);
         }
     }
