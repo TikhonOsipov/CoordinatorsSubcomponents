@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import javax.inject.Inject;
 
@@ -33,13 +34,11 @@ public class LoginActivity extends BaseActivity implements ILoginView {
                 presenter.textClicked();
             }
         });
+    }
 
-        /*Log.d("myLogs", "Login presenter is null? " + (presenter == null) + "; Login coordinator is null? " + (coordinator == null));
-        try {
-            Log.d("myLogs", "Login presenter hashcode: " + presenter.hashCode() + "; Login coordinator hashcode: " + coordinator.hashCode());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
+    @Override
+    public void makeToast(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -47,11 +46,5 @@ public class LoginActivity extends BaseActivity implements ILoginView {
         Log.w("myLogs", getClass().getSimpleName() + ": setupComponent called");
         component = appComponent.plus(new ScreensModule(this));
         component.inject(this);
-        /*component = DaggerIScreensComponent.builder()
-                .iAppComponent(appComponent)
-                .screensModule(new ScreensModule(this))
-                .build();
-        component.inject(this);*/
-        presenter.setupComponent(component);
     }
 }

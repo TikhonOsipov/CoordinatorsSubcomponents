@@ -1,6 +1,5 @@
 package ru.hiq.coordinators.screens.main_screen;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,7 +12,6 @@ import ru.hiq.coordinators.dagger.components.IAppComponent;
 import ru.hiq.coordinators.dagger.components.IScreensComponent;
 import ru.hiq.coordinators.dagger.modules.ScreensModule;
 import ru.hiq.coordinators.screens.base.BaseActivity;
-import ru.hiq.coordinators.screens.login_screen.LoginActivity;
 
 public class MainActivity extends BaseActivity implements IMainView {
     IScreensComponent component;
@@ -31,7 +29,6 @@ public class MainActivity extends BaseActivity implements IMainView {
             @Override
             public void onClick(View view) {
                 presenter.textClicked();
-                startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
         });
     }
@@ -41,11 +38,5 @@ public class MainActivity extends BaseActivity implements IMainView {
         Log.w("myLogs", getClass().getSimpleName() + ": setupComponent called");
         component = appComponent.plus(new ScreensModule(this));
         component.inject(this);
-        /*component = DaggerIScreensComponent.builder()
-                .iAppComponent(appComponent)
-                .screensModule(new ScreensModule(this))
-                .build();
-        component.inject(this);*/
-        presenter.setupComponent(component);
     }
 }

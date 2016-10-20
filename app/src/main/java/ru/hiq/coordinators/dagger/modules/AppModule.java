@@ -7,7 +7,6 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import ru.hiq.coordinators.model.Model;
-import ru.hiq.coordinators.navigation.AppCoordinator;
 
 /**
  * Created by tikhon.osipov on 11.07.2016
@@ -26,12 +25,6 @@ public class AppModule {
     @Singleton
     public Application provideApplication() {
         return app;
-    }
-
-    @Provides
-    @Singleton
-    public AppCoordinator provideAppCoordinator() {
-        return new AppCoordinator(app);
     }
 
     @Provides

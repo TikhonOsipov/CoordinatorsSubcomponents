@@ -5,5 +5,5 @@ package ru.hiq.coordinators.navigation;
  */
 public interface ILoginCoordinator {
     void start();
-    void onFinish(ILoginCoordinatorCallbackHandler callbackHandler);
+    //void onFinish(ILoginCoordinatorCallbackHandler callbackHandler);
 }

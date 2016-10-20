@@ -7,8 +7,21 @@ import javax.inject.Inject;
  */
 
 public class Model {
+    private boolean needLogin = false;
 
     @Inject
     public Model() {
+    }
+
+    public boolean isNeedLogin() {
+        return needLogin;
+    }
+
+    public void setNeedLogin(boolean needLogin) {
+        this.needLogin = needLogin;
+    }
+
+    public void clearLogin() {
+        setNeedLogin(false);
     }
 }

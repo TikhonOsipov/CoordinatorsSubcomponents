@@ -4,10 +4,7 @@ import android.util.Log;
 
 import javax.inject.Inject;
 
-import ru.hiq.coordinators.dagger.components.ICoordinatorComponent;
-import ru.hiq.coordinators.dagger.components.IScreensComponent;
-import ru.hiq.coordinators.dagger.modules.CoordinatorModule;
-import ru.hiq.coordinators.navigation.MainCoordinator;
+import ru.hiq.coordinators.model.Model;
 import ru.hiq.coordinators.screens.base.BasePresenter;
 
 /**
@@ -15,30 +12,23 @@ import ru.hiq.coordinators.screens.base.BasePresenter;
  */
 public class MainPresenter extends BasePresenter implements IMainPresenter {
     private IMainView view;
-    private ICoordinatorComponent component;
+    private IMainCoordinatorCallback coordinator;
 
     @Inject
-    MainCoordinator coordinator;
+    Model model;
 
     @Inject
-    public MainPresenter(IMainView view) {
+    public MainPresenter(IMainView view, IMainCoordinatorCallback coordinator) {
         this.view = view;
+        super.setView(view);
+        this.coordinator = coordinator;
+        coordinator.setPresenter(this);
     }
 
     @Override
     public void textClicked() {
-        coordinator.start();
-    }
-
-    @Override
-    public void setupComponent(IScreensComponent screensComponent) {
-        Log.w("myLogs", getClass().getSimpleName() + ": setupComponent called");
-        component = screensComponent.plus(new CoordinatorModule(this));
-        component.inject(this);
-        /*component = DaggerICoordinatorComponent.builder()
-                .iScreensComponent(screensComponent)
-                .coordinatorModule(new CoordinatorModule(this))
-                .build();
-        component.inject(this);*/
+        Log.d("myLogs", getClass().getSimpleName() + ": presenter#" + hashCode());
+        model.setNeedLogin(true);
+        coordinator.finish();
     }
 }
