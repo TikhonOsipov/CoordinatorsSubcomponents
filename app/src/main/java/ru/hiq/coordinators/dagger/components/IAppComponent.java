@@ -6,6 +6,7 @@ import dagger.Component;
 import ru.hiq.coordinators.application.App;
 import ru.hiq.coordinators.dagger.modules.AppModule;
 import ru.hiq.coordinators.dagger.modules.ScreensModule;
+import ru.hiq.coordinators.dagger.modules.ScreensTestModule;
 import ru.hiq.coordinators.model.Model;
 
 /**
@@ -15,6 +16,7 @@ import ru.hiq.coordinators.model.Model;
 @Component(modules = {AppModule.class})
 public interface IAppComponent {
     IScreensComponent plus(ScreensModule module);
+    IScreensTestComponent plus(ScreensTestModule module);
     Model getModel();
     void inject(App app);
 }
