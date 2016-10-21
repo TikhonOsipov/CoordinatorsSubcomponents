@@ -28,12 +28,10 @@ public abstract class FlowCoordinator implements ICoordinator {
         presenter = requestPresenter();
         IBaseView navContext = presenter.getNavigationContext();
         new Navigation.Condition(navContext)
-                .when(model.isNeedLogin())
+                .when(model.needsLogin())
                 .launch(LoginActivity.class).create();
         new Navigation.Condition(navContext)
-                .when(!model.isNeedLogin())
-                .launch(MainActivity.class)
-                .clearTask()
-                .create();
+                .when(!model.needsLogin())
+                .launch(MainActivity.class).clearTask().create();
     }
 }

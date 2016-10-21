@@ -13,7 +13,7 @@ public class Model {
     public Model() {
     }
 
-    public boolean isNeedLogin() {
+    public boolean needsLogin() {
         return needLogin;
     }
 
