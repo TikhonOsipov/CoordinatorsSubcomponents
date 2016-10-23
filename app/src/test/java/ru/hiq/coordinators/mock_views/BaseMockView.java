@@ -16,4 +16,9 @@ public class BaseMockView implements IBaseView {
     public void startViewClearTask(Class<?> activityClass) {
         System.out.println("View started with clear task: " + activityClass.getName());
     }
+
+    @Override
+    public void close() {
+
+    }
 }

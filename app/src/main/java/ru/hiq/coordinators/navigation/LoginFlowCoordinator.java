@@ -12,7 +12,7 @@ import ru.hiq.coordinators.screens.main_screen.MainActivity;
  * Created by tikhon.osipov on 20.10.2016
  */
 
-public class FlowCoordinator implements ICoordinator {
+class LoginFlowCoordinator implements ICoordinator {
     private IBasePresenter presenter;
 
     @Inject
@@ -27,17 +27,16 @@ public class FlowCoordinator implements ICoordinator {
         this.presenter = presenter;
     }
 
-    FlowCoordinator() {
+    LoginFlowCoordinator() {
     }
 
     @Override
     public void finish() {
         IBaseView navContext = presenter.getNavigationContext();
-        new Navigation.Condition(navContext)
-                .when(model.needsLogin())
-                .launch(LoginActivity.class).create();
-        new Navigation.Condition(navContext)
-                .when(!model.needsLogin())
-                .launch(MainActivity.class).clearTask().create();
+        if(model.needsLogin()) {
+            navContext.startView(LoginActivity.class);
+        } else {
+            navContext.startViewClearTask(MainActivity.class);
+        }
     }
 }

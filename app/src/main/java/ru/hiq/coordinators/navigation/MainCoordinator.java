@@ -10,7 +10,7 @@ import ru.hiq.coordinators.screens.main_screen.IMainCoordinatorCallback;
  * Created by tikhon.osipov on 17.10.2016
  */
 
-public class MainCoordinator extends FlowCoordinator implements IMainCoordinator, IMainCoordinatorCallback {
+public class MainCoordinator extends LoginFlowCoordinator implements IMainCoordinator, IMainCoordinatorCallback {
     @Inject
     Model model;
 

@@ -9,7 +9,7 @@ import ru.hiq.coordinators.screens.login_screen.ILoginCoordinatorCallback;
 /**
  * Created by tikhon.osipov on 11.07.2016
  */
-public class LoginCoordinator extends FlowCoordinator implements ILoginCoordinator, ILoginCoordinatorCallback {
+public class LoginCoordinator extends LoginFlowCoordinator implements ILoginCoordinator, ILoginCoordinatorCallback {
     @Inject
     Model model;
 

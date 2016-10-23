@@ -8,6 +8,7 @@ import javax.inject.Inject;
 
 public class Model {
     private boolean needLogin = false;
+    private boolean paymentSelected = false;
 
     @Inject
     public Model() {
@@ -23,5 +24,17 @@ public class Model {
 
     public void clearLogin() {
         setNeedLogin(false);
+    }
+
+    public boolean paymentWasSelected() {
+        return paymentSelected;
+    }
+
+    public void setPaymentSelected(boolean selected) {
+        this.paymentSelected = selected;
+    }
+
+    public void clearSelectedPayment() {
+        setPaymentSelected(false);
     }
 }
