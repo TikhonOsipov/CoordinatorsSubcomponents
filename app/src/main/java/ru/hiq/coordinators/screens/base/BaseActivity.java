@@ -30,5 +30,10 @@ public abstract class BaseActivity extends AppCompatActivity implements IBaseVie
         startActivity(intent);
     }
 
+    @Override
+    public void close() {
+        finish();
+    }
+
     protected abstract void setupComponent(IAppComponent appComponent);
 }
