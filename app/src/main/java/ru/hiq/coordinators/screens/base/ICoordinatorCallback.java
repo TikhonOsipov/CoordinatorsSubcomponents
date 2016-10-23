@@ -5,6 +5,6 @@ package ru.hiq.coordinators.screens.base;
  */
 
 public interface ICoordinatorCallback {
-    void setPresenter(BasePresenter presenter);
+    void setPresenter(IBasePresenter presenter);
     void finish();
 }

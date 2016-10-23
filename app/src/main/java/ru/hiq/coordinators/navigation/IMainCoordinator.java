@@ -5,5 +5,4 @@ package ru.hiq.coordinators.navigation;
  */
 
 public interface IMainCoordinator {
-    void start();
 }

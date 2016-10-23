@@ -1,10 +1,9 @@
 package ru.hiq.coordinators.screens.login_screen;
 
-import android.util.Log;
-
 import javax.inject.Inject;
 
 import ru.hiq.coordinators.model.Model;
+import ru.hiq.coordinators.navigation.LoginCoordinator;
 import ru.hiq.coordinators.screens.base.BasePresenter;
 
 /**
@@ -17,6 +16,12 @@ public class LoginPresenter extends BasePresenter implements ILoginPresenter {
     @Inject
     Model model;
 
+    @SuppressWarnings("unused")
+    public void setModel(Model model) {
+        this.model = model;
+        ((LoginCoordinator) coordinator).setModel(model);
+    }
+
     @Inject
     public LoginPresenter(ILoginView view, ILoginCoordinatorCallback coordinator) {
         this.view = view;
@@ -27,13 +32,12 @@ public class LoginPresenter extends BasePresenter implements ILoginPresenter {
 
     @Override
     public void onCreate() {
-        Log.d("myLogs", getClass().getSimpleName() + " onCreate(): model#" + model.hashCode());
         model.clearLogin();
     }
 
     @Override
     public void textClicked() {
-        view.makeToast("Clicked!");
+        view.makeToast("Going back to MainActivity");
         model.clearLogin();
         coordinator.finish();
     }
