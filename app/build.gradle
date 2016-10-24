@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
-        applicationId "ru.hiq.coordinators"
+        applicationId "com.tixon.coordinators"
         minSdkVersion 19
         targetSdkVersion 24
         versionCode 1
